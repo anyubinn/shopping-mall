@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: shopping_mall_project
+
+  datasource:
+    url: jdbc:mysql://localhost:3305/shopping_mall?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: 0724
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+    show-sql: true
+
+jwt:
+  # 개발용 시크릿. 운영에서는 환경변수로 주입하세요. (HS256 → 최소 32바이트)
+  secret: ${JWT_SECRET:dev-local-shopping-mall-jwt-secret-key-please-change-in-prod-0724}
+  access-token-validity-ms: 3600000  # 1시간
+
+logging:
+  level:
+    org.hibernate.SQL: debug
